@@ -1,14 +1,28 @@
 <html>
-  <head>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-  </head>
-  <body onload="showMyFace()">
-    <video id="yourVideo" autoplay muted playsinline></video>
-    <video id="friendsVideo" autoplay playsinline></video>
-    <br />
-    <button onclick="showFriendsFace()" type="button" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Call</button>
-    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-    <script src="js/script.js"></script>
-  </body>
+
+<head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Video chat app</title>
+</head>
+
+<body onload="showMyFace()">
+  <div class="row container">
+    <div class="col-md-5" style="margin: .3rem">
+      <video id="yourVideo" autoplay muted playsinline></video>
+    </div>
+    <div class="col-md-5" style="margin: .3rem">
+      <video id="friendsVideo" autoplay playsinline></video>
+    </div>
+    <button onclick="showFriendsFace()" type="button" class="btn btn-primary btn-lg btn-block">
+      <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
+      Call
+    </button>
+  </div>
+  <br />
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
 </html>

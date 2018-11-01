@@ -22,16 +22,17 @@ var servers = {
     { urls: "stun:stun.l.google.com:19302" },
     {
       urls: "turn:numb.viagenie.ca",
-      credential: "beaver",
-      username: "webrtc.websitebeaver@gmail.com"
+      credential: "@Surendra59",
+      username: "shivamkmr.50397@gmail.com"
     }
   ]
 };
-var pc = new RTCPeerConnection(servers);
-pc.onicecandidate = event =>
+var pc = new RTCPeerConnection();
+pc.onicecandidate = event => {
   event.candidate
     ? sendMessage(yourId, JSON.stringify({ ice: event.candidate }))
     : console.log("Sent All Ice");
+};
 pc.onaddstream = event => (friendsVideo.srcObject = event.stream);
 
 function sendMessage(senderId, data) {
@@ -60,7 +61,7 @@ database.on("child_added", readMessage);
 
 function showMyFace() {
   navigator.mediaDevices
-    .getUserMedia({ audio: true, video: true })
+    .getUserMedia({ audio: true, video: { width: 320, height: 240 } })
     .then(stream => (yourVideo.srcObject = stream))
     .then(stream => pc.addStream(stream));
 }
@@ -72,3 +73,10 @@ function showFriendsFace() {
       sendMessage(yourId, JSON.stringify({ sdp: pc.localDescription }))
     );
 }
+
+function endCall() {
+  pc.close();
+}
+pc.on("close", function() {
+  friendsVideo.srcObject(null);
+});

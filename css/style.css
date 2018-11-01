@@ -5,6 +5,10 @@ video {
   width: 320px;
   height: 240px;
 }
+#yourVideo {
+  width: 160px;
+  height: 120px;
+}
 button {
   margin: 5px 0px 0px 10px !important;
 }
